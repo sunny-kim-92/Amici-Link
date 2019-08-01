@@ -10,7 +10,6 @@ arr.links.forEach((val, i) => {
       return final;
     })
     .then($ => {
-      let tempHold = {};
       let certArr = [];
       let petArr = [];
       let resArr = [];
