@@ -12,9 +12,6 @@ caseLinksArr.js - Array with links to each case page on SCOTUSblog.com
 caseTitlesArr.js - Array of case titles, provides index number which is used
 for charts and articles
 
-dloadPDF.js - Function to programmatically download PDFs of each amicus brief.
-PDFs that are hosted on supremecourt.gov are skipped.
-
 filersArr.js - Array of groups that have filed amicus briefs for each case. Gathers
 from the title as listed on SCOTUSblog.com
 
