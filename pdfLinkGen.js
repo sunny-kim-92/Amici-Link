@@ -1,6 +1,7 @@
 const cheerio = require("cheerio");
 const rp = require("request-promise");
 const arr = require("./caseLinksArr");
+const fs = require("fs")
 
 
 arr.links.forEach((val, i) => {
@@ -18,33 +19,33 @@ arr.links.forEach((val, i) => {
       $(`tr.color6`)
         .find(`a`)
         .attr(`href`, (i, val) => {
-          if (val.indexOf('www.supremecourt.gov') === -1)
+          if (val.indexOf('www.supremecourt.gov') != -1)
           petArr.push(val);
         });
 
       $(`tr.color2`)
         .find(`a`)
         .attr(`href`, (i, val) => {
-          if (val.indexOf('www.supremecourt.gov') === -1)
+          if (val.indexOf('www.supremecourt.gov') != -1)
           certArr.push(val);
         });
 
       $(`tr.color7`)
         .find(`a`)
         .attr(`href`, (i, val) => {
-          if (val.indexOf('www.supremecourt.gov') === -1)
+          if (val.indexOf('www.supremecourt.gov') != -1)
           resArr.push(val);
         });
       $(`tr.color9`)
         .find(`a`)
         .attr(`href`, (i, val) => {
-          if (val.indexOf('www.supremecourt.gov') === -1)
+          if (val.indexOf('www.supremecourt.gov') != -1)
           usArr.push(val);
         });
 
       return [i, petArr, resArr, certArr, usArr];
     })
-    .then(stuff => {
-      console.log(stuff)
+    .then(links => {
+      fs.writeFileSync('./pdfLinks/case_' + links[0] + '.json', JSON.stringify(links))
     });
 });

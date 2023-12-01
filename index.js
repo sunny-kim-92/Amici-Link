@@ -1,8 +1,9 @@
 const cheerio = require("cheerio");
 const rp = require("request-promise");
+const fs = require('fs')
 
 rp(
-    "https://www.scotusblog.com/case-files/terms/ot2018/"
+    "https://www.scotusblog.com/case-files/terms/ot2022/"
 )
   .then(res => {
     let links = cheerio.load(res);
@@ -19,7 +20,7 @@ rp(
     $(`a.case-title`).text((i, val) => {
       titlesArr.push([i, val])
     })
-    console.log(titlesArr)
+    // console.log(titlesArr)
     return linksArr;
   })
   .then(arr => {
@@ -31,7 +32,7 @@ rp(
         );
       } else return false;
     });
-    console.log(final)
+    // console.log(final)
     return final;
   })
   .then(caseLinks => {
@@ -66,6 +67,7 @@ rp(
             tempHold['Respondent'] = tempRespondent
             tempHold['Petitioner'] = tempPetitioner
             tempObj[tempName] = tempHold
+            fs.writeFileSync('test.json', JSON.stringify(tempObj))
         });
     })
   })

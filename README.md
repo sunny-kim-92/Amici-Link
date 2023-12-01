@@ -1,6 +1,6 @@
 # amici-help
 A set of programs and tools used for collecting and analyzing data
-for an upcoming article on amicus briefs in the October 2018 term
+for an upcoming article on amicus briefs in the October 2022 term
 of the Supreme Court.
 
 index.js - Gathers information from SCOTUSblog.com using Cheerio.js
